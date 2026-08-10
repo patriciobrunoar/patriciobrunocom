@@ -68,8 +68,10 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* Scroll reveal */
-  if ("IntersectionObserver" in window && !reduceMotion) {
+  /* Scroll reveal — kept active even under reduced motion (it's a short
+     one-time opacity/translate fade, not the continuous/parallax motion
+     that reduced-motion is meant to suppress). */
+  if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -90,9 +92,11 @@
     });
   }
 
-  /* Hero dot-swirl particle field — echoes the brand banner motif */
+  /* Hero dot-swirl particle field — echoes the brand banner motif.
+     Runs as a static single frame under reduced motion instead of
+     disappearing, so the page doesn't read as broken/empty. */
   var canvas = document.getElementById("hero-canvas");
-  if (canvas && !reduceMotion) {
+  if (canvas) {
     var ctx = canvas.getContext("2d");
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var particles = [];
@@ -133,20 +137,18 @@
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
-        var dx = Math.sin(t * p.speed + p.offset) * 6;
-        var dy = Math.cos(t * p.speed + p.offset) * 6;
+        var dx = reduceMotion ? 0 : Math.sin(t * p.speed + p.offset) * 6;
+        var dy = reduceMotion ? 0 : Math.cos(t * p.speed + p.offset) * 6;
         ctx.beginPath();
         ctx.arc(p.baseX + dx, p.baseY + dy, p.r, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(79, 216, 224, " + p.alpha + ")";
         ctx.fill();
       }
-      requestAnimationFrame(draw);
+      if (!reduceMotion) requestAnimationFrame(draw);
     }
 
     window.addEventListener("resize", resize, { passive: true });
     resize();
-    requestAnimationFrame(draw);
-  } else if (canvas) {
-    canvas.style.display = "none";
+    draw();
   }
 })();
