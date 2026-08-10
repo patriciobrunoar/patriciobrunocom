@@ -49,11 +49,11 @@ body {
 }
 
 .font-display {
-  font-family: "Fraunces", "Georgia", serif;
+  font-family: "como", "Fraunces", "Georgia", serif;
 }
 
 h1, h2, h3, h4 {
-  font-family: "Fraunces", "Georgia", serif;
+  font-family: "como", "Fraunces", "Georgia", serif;
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -124,7 +124,7 @@ section { position: relative; }
   height: 72px;
 }
 .nav-logo {
-  font-family: "Fraunces", serif;
+  font-family: "como", "Fraunces", serif;
   font-size: 1.15rem;
   color: var(--cream);
   letter-spacing: -0.01em;
@@ -316,7 +316,7 @@ section { position: relative; }
   align-items: center;
 }
 .logo-row span {
-  font-family: "Fraunces", serif;
+  font-family: "como", "Fraunces", serif;
   font-size: 1.25rem;
   color: var(--text-dim);
   opacity: 0.75;
@@ -403,7 +403,7 @@ section { position: relative; }
   color: var(--text);
 }
 .compare-card .figure {
-  font-family: "Fraunces", serif;
+  font-family: "como", "Fraunces", serif;
   font-size: 2rem;
   color: var(--text-faint);
 }
@@ -500,7 +500,7 @@ section { position: relative; }
 .service-card.featured .dek { font-size: 1.02rem; }
 
 .service-num {
-  font-family: "Fraunces", serif;
+  font-family: "como", "Fraunces", serif;
   font-size: 0.95rem;
   color: var(--cyan-soft);
   border: 1px solid var(--line-strong);
@@ -593,7 +593,7 @@ section { position: relative; }
   padding-top: 0.9rem;
 }
 .stat .num {
-  font-family: "Fraunces", serif;
+  font-family: "como", "Fraunces", serif;
   font-size: 1.9rem;
   color: var(--cyan-soft);
 }
@@ -644,7 +644,7 @@ section { position: relative; }
   will-change: transform;
 }
 .model-card .letter {
-  font-family: "Fraunces", serif;
+  font-family: "como", "Fraunces", serif;
   font-size: 1rem;
   color: var(--cyan-soft);
   margin-bottom: 1rem;
@@ -721,7 +721,7 @@ footer {
   flex-wrap: wrap;
   gap: 1.5rem;
 }
-.footer-logo { font-family: "Fraunces", serif; color: var(--cream); font-size: 1.05rem; }
+.footer-logo { font-family: "como", "Fraunces", serif; color: var(--cream); font-size: 1.05rem; }
 .footer-links { display: flex; gap: 1.75rem; }
 .footer-links a { font-size: 0.85rem; color: var(--text-dim); transition: color .2s var(--ease); }
 .footer-links a:hover { color: var(--cyan-soft); }
@@ -751,7 +751,7 @@ footer {
   gap: 1.5rem;
 }
 .mobile-menu.open { display: flex; }
-.mobile-menu a { font-size: 1.3rem; font-family: "Fraunces", serif; color: var(--cream); }
+.mobile-menu a { font-size: 1.3rem; font-family: "como", "Fraunces", serif; color: var(--cream); }
 .mobile-menu .btn { margin-top: 1rem; }
 
 @media (min-width: 861px) {
