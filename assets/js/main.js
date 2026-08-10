@@ -4,14 +4,49 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Nav scroll state */
+  /* Nav scroll state + scroll progress + hero parallax */
   var nav = document.querySelector(".nav");
+  var progressBar = document.getElementById("scroll-progress-bar");
+  var heroGlow = document.querySelector(".hero-glow");
+  var heroParticles = document.querySelector(".hero-particles");
+  var heroEl = document.querySelector(".hero");
+
   var onScroll = function () {
-    if (window.scrollY > 12) nav.classList.add("scrolled");
+    var y = window.scrollY;
+    if (y > 12) nav.classList.add("scrolled");
     else nav.classList.remove("scrolled");
+
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    if (progressBar) progressBar.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+
+    if (!reduceMotion && heroEl) {
+      var heroH = heroEl.offsetHeight;
+      if (y < heroH) {
+        var p = y / heroH;
+        if (heroGlow) heroGlow.style.transform = "translateY(" + (p * 80) + "px)";
+        if (heroParticles) heroParticles.style.transform = "translateY(" + (p * 40) + "px)";
+      }
+    }
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  /* Subtle tilt-on-hover for cards — 2026 micro-interaction */
+  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".service-card, .compare-card, .model-card").forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform =
+          "perspective(1000px) rotateX(" + (-y * 4) + "deg) rotateY(" + (x * 4) + "deg) translateY(-4px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+      });
+    });
+  }
 
   /* Mobile menu */
   var toggle = document.querySelector(".nav-toggle");
