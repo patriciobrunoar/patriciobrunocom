@@ -212,11 +212,12 @@ section { position: relative; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  opacity: 0.55;
   background-image: url("../images/hero-bg.webp");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: cover;
-  animation: heroDrift 28s ease-in-out infinite alternate;
+  animation: heroDrift 16s ease-in-out infinite alternate, heroBreathe 6s ease-in-out infinite;
   mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
 }
@@ -224,14 +225,18 @@ section { position: relative; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, var(--bg) 0%, var(--bg) 20%, rgba(14,50,52,0.8) 40%, rgba(14,50,52,0.3) 62%, transparent 82%);
+  background: linear-gradient(100deg, var(--bg) 0%, var(--bg) 26%, rgba(14,50,52,0.88) 46%, rgba(14,50,52,0.45) 66%, transparent 86%);
 }
 @keyframes heroDrift {
   from { background-position: right center; }
-  to { background-position: 55% center; }
+  to { background-position: 58% center; }
+}
+@keyframes heroBreathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.6; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-particles { animation: none; }
+  .hero-particles { animation: none; opacity: 0.5; }
 }
 
 .hero-glow {
