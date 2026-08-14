@@ -212,11 +212,13 @@ section { position: relative; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image: url("../images/hero-bg.jpg");
+  background-image: url("../images/hero-bg.webp");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: cover;
   animation: heroDrift 28s ease-in-out infinite alternate;
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
 }
 .hero-particles::after {
   content: "";
