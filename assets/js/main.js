@@ -72,6 +72,52 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* Perspective / Essays — populated from assets/data/linkedin-posts.json.
+     Section stays hidden (see .essays-section in CSS) until real posts load,
+     so an empty or unreachable feed never shows a broken block. */
+  var essaysSection = document.getElementById("essays");
+  var essaysGrid = document.getElementById("essays-grid");
+  if (essaysSection && essaysGrid) {
+    fetch("assets/data/linkedin-posts.json", { cache: "no-store" })
+      .then(function (res) { return res.ok ? res.json() : []; })
+      .then(function (posts) {
+        if (!Array.isArray(posts) || posts.length === 0) return;
+        posts.slice(0, 2).forEach(function (post) {
+          if (!post || !post.url) return;
+          var card = document.createElement("article");
+          card.className = "essay-card";
+
+          if (post.date) {
+            var d = new Date(post.date + "T00:00:00");
+            if (!isNaN(d)) {
+              var dateEl = document.createElement("div");
+              dateEl.className = "essay-date";
+              dateEl.textContent = d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+              card.appendChild(dateEl);
+            }
+          }
+
+          var excerptEl = document.createElement("p");
+          excerptEl.className = "essay-excerpt";
+          excerptEl.textContent = post.excerpt || "";
+          card.appendChild(excerptEl);
+
+          var linkEl = document.createElement("a");
+          linkEl.className = "essay-link";
+          linkEl.href = post.url;
+          linkEl.target = "_blank";
+          linkEl.rel = "noopener";
+          linkEl.textContent = "Read on LinkedIn →";
+          card.appendChild(linkEl);
+
+          essaysGrid.appendChild(card);
+        });
+
+        if (essaysGrid.children.length > 0) essaysSection.classList.add("has-posts");
+      })
+      .catch(function () { /* leave the section hidden on any fetch/parse failure */ });
+  }
+
   /* Scroll reveal — kept active even under reduced motion (it's a short
      one-time opacity/translate fade, not the continuous/parallax motion
      that reduced-motion is meant to suppress). */
