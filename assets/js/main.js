@@ -27,7 +27,9 @@
         if (heroGlow) heroGlow.style.transform = "translateY(" + (p * 100) + "px)";
         // Background lags behind the scroll (classic parallax: moves slower
         // than the foreground text), so it visibly drifts as you scroll.
-        if (heroParticles) heroParticles.style.transform = "translateY(" + (p * 180) + "px) scale(1.12)";
+        // No scale here — zooming in cropped away the faded bottom margin
+        // baked into the image, which brought back a visible hard edge.
+        if (heroParticles) heroParticles.style.transform = "translateY(" + (p * 180) + "px)";
       }
     }
   };
