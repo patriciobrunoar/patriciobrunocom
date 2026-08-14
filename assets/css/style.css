@@ -218,8 +218,11 @@ section { position: relative; }
   background-position: right center;
   background-size: cover;
   animation: heroDrift 16s ease-in-out infinite alternate, heroBreathe 6s ease-in-out infinite;
-  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 97%);
+  /* Soft radial vignette so the swirl dissolves into the background on
+     every side (top/right/left too) instead of showing its cropped
+     edge once the parallax/drift shifts it around. */
+  mask-image: radial-gradient(ellipse 75% 70% at 78% 38%, black 0%, black 40%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 78% 38%, black 0%, black 40%, transparent 88%);
 }
 .hero-particles::after {
   content: "";
