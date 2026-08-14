@@ -212,7 +212,7 @@ section { position: relative; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.55;
+  opacity: 0.85;
   background-image: url("../images/hero-bg.webp");
   background-repeat: no-repeat;
   background-position: right center;
@@ -230,11 +230,11 @@ section { position: relative; }
   to { background-position: 58% center; }
 }
 @keyframes heroBreathe {
-  0%, 100% { opacity: 0.45; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.78; }
+  50% { opacity: 0.92; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-particles { animation: none; opacity: 0.5; }
+  .hero-particles { animation: none; opacity: 0.85; }
 }
 
 .hero-glow {
