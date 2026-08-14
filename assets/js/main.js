@@ -24,8 +24,10 @@
       var heroH = heroEl.offsetHeight;
       if (y < heroH) {
         var p = y / heroH;
-        if (heroGlow) heroGlow.style.transform = "translateY(" + (p * 80) + "px)";
-        if (heroParticles) heroParticles.style.transform = "translateY(" + (p * 40) + "px)";
+        if (heroGlow) heroGlow.style.transform = "translateY(" + (p * 100) + "px)";
+        // Background lags behind the scroll (classic parallax: moves slower
+        // than the foreground text), so it visibly drifts as you scroll.
+        if (heroParticles) heroParticles.style.transform = "translateY(" + (p * 180) + "px) scale(1.12)";
       }
     }
   };
