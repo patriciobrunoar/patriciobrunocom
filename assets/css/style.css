@@ -679,57 +679,6 @@ section { position: relative; }
 }
 .model-card .best-for b { color: var(--text); font-weight: 600; }
 
-/* ---------------------------- Essays / Perspective ---------------------------- */
-.essays-section { display: none; }
-.essays-section.has-posts { display: block; }
-
-.essays-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-@media (max-width: 900px) { .essays-grid { grid-template-columns: 1fr; } }
-
-.essay-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 2rem 1.75rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: var(--bg-raised);
-  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
-}
-.essay-card:hover { border-color: var(--line-strong); transform: translateY(-4px); }
-.essay-card .essay-date {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  color: var(--cyan-soft);
-  margin-bottom: 0.85rem;
-}
-.essay-card .essay-excerpt {
-  color: var(--text-dim);
-  font-size: 0.98rem;
-  line-height: 1.65;
-  flex: 1;
-  white-space: pre-line;
-}
-.essay-card .essay-link {
-  margin-top: 1.25rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--cyan-soft);
-  transition: color 0.2s var(--ease);
-}
-.essay-card .essay-link:hover { color: var(--cyan); }
-
-.essays-more { margin-top: 2.5rem; text-align: center; }
-
 /* ---------------------------- Final CTA ---------------------------- */
 .cta-block {
   position: relative;
