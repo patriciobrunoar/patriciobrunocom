@@ -330,21 +330,6 @@ section { position: relative; }
   color: var(--text-faint);
   margin-bottom: 1.1rem;
 }
-.logo-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.5rem, 4vw, 3.2rem);
-  align-items: center;
-}
-.logo-row span {
-  font-family: "como", "Fraunces", serif;
-  font-size: 1.25rem;
-  color: var(--text-dim);
-  opacity: 0.75;
-  transition: opacity 0.2s var(--ease), color .2s var(--ease);
-}
-.logo-row span:hover { opacity: 1; color: var(--cream); }
-
 @keyframes rise {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
